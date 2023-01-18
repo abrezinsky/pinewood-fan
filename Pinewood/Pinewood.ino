@@ -39,7 +39,7 @@ int  fanSpeed     = 0;
 void setup() {
   pinMode(ENABLELED, OUTPUT);
   
-  pinMode(ENABLESW, INPUT_PULLUP)
+  pinMode(ENABLESW, INPUT_PULLUP);
   pinMode(DROPSW, INPUT_PULLUP);
 
   pinMode(FANPIN, OUTPUT);
@@ -103,6 +103,7 @@ void setupStateMachine() {
   stateMachine.AddState(StateName[DONE],     0,              nullptr,          onDoneCb,        nullptr);
 
   stateMachine.AddTransition(PENDING, PRIMED,   [](){return (dropButton == true && enableButton == true); } );
+  stateMachine.AddTransition(PRIMED,  PENDING,  [](){return (dropButton == false && enableButton == true); } ); // Get us out of this loaded gun situation
   stateMachine.AddTransition(PRIMED,  COASTING, [](){return (dropButton == false); } );
   stateMachine.AddTimedTransition(COASTING, POWERED);
   stateMachine.AddTimedTransition(POWERED,  DONE);
