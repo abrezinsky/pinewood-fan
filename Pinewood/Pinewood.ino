@@ -11,7 +11,7 @@
 
 #define STARTSPEED 0   // When we're at the gate and waiting for the start
 #define DROPSPEED  60  // The time when we're coasting down the hill
-#define WARPSPEED  300 // Blast off
+#define WARPSPEED  120 // Blast off
 
 #define COASTTIME  1500  //How long do we run at DROPSPEED
 #define POWEREDTIME 1000 // HOW long do we run at WARPSPEED
